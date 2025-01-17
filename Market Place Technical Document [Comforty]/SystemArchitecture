@@ -1,0 +1,14 @@
+System Architecture;
+    ->front-end: nextjs;
+    ->back-end: sanity(CMS);
+
+Sanity and nextjs integration;
+    ->overveiw;
+        ->it describe the workflow, interaction between  component and api reqirments fro smooth operations ;
+    ->sanity;
+        ->content managment system for storing costumer data, products detail and record orders.
+
+    ->nextjs;
+        ->Serves as the client-side framework for rendering content and providing user interfaces.
+
+    

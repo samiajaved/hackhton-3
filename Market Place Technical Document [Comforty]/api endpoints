@@ -1,0 +1,118 @@
+-----api end points-------
+endpoint        metod     routes                           Purpose
+/users            GET    /api/users                       - Retrieve a list of all users
+/products         GET    /api/products                    - Retrieve a list of all products
+/orders           POST   /api/orders                      - Create a new order
+/delivery         POST   /api/payment                     - Initiate a payment
+/shipmentstatus   GET   /api/shipment                     -track shipment status through third party
+/tracking         GET    /api/tracking/status/:trackingId - Get current status by tracking ID
+
+-----users------
+{
+  "id": "uuid",
+  "name": "string",
+  "email": "string",
+  "password": "hashed_string",
+  "address": {
+    "street": "string",
+    "city": "string",
+    "state": "string",
+    "country": "string",
+  },
+  "phone": "string",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}
+
+-----products------
+
+{  "id": "uuid",
+  "name": "string",
+  "description": "string",
+  "price": "decimal",
+  "discount": "decimal (optional)",
+  "categoryId": "uuid",
+  "brand": "string",
+  "stock": "integer",
+  "images": ["array of strings (image URLs)"],
+  }
+
+
+
+----order------
+{
+  "id": "uuid",
+  "userId": "uuid",
+  "orderItems": [
+    {
+      "productId": "uuid",
+      "quantity": "integer",
+      "price": "decimal",
+      "discount": "decimal (optional)"
+    }
+  ],
+  "totalAmount": "decimal",
+  "status": "string (e.g., 'pending', 'shipped', 'delivered', 'cancelled')",
+  "paymentMethod": "string (e.g., 'credit_card', 'paypal', 'cash_on_delivery')",
+  "shippingAddress": {
+    "street": "string",
+    "city": "string",
+    "state": "string",
+    "country": "string",
+    "zip": "string"
+  },
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}
+
+
+----shipment------
+{
+  "id": "uuid",
+  "orderId": "uuid",
+  "carrier": "string (e.g., 'FedEx', 'DHL', 'UPS')",
+  "trackingNumber": "string (unique identifier provided by the carrier)",
+  "status": "string (e.g., 'pending', 'in_transit', 'delivered', 'failed', 'returned')",
+  "estimatedDeliveryDate": "timestamp",
+  "shippingAddress": {
+    "street": "string",
+    "city": "string",
+    "state": "string",
+    "country": "string",
+    "zip": "string"
+  },
+  "shippingMethod": "string (e.g., 'standard', 'express', 'overnight')",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}
+
+
+
+-------tracking------
+{
+  "id": "uuid",
+  "shipmentId": "uuid",
+  "events": [
+    {
+      "eventId": "uuid",
+      "status": "string (e.g., 'picked_up', 'in_transit', 'out_for_delivery', 'delivered')",
+      "location": {
+        "city": "string",
+        "state": "string",
+        "country": "string"
+      },
+      "timestamp": "timestamp",
+      "description": "string (optional; e.g., 'Package arrived at sorting facility')"
+    }
+  ],
+  "currentStatus": {
+    "status": "string (e.g., 'in_transit')",
+    "location": {
+      "city": "string",
+      "state": "string",
+      "country": "string"
+    },
+    "timestamp": "timestamp"
+  },
+  "lastUpdated": "timestamp"
+}

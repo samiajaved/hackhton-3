@@ -1,0 +1,38 @@
+nextjs 
+    ->dynamic routing for products pages
+    ->api integration with sanity CMS and Ship engine
+    ->products images
+    ->components for clear code
+sanity
+    ->manage content like product data, costumer data description of the project.
+    ->schema defined structure
+    ->real-time content update
+    ->integration with nextjs via GROQ quiries
+ship engine
+    ->handle orders, tracking , and calculations
+mock api
+    ->fake api for handling  dummay data 
+    ->mock api for testing order workflows and api interactions
+
+--------workflow-----------
+user intraction
+    ->user intract to webiste 
+    ->front-end make request 
+    ->browser render data
+order products
+    ->user add product to cart
+    ->check out products 
+    ->order details save in sanity
+    ->payment method 
+    ->costumer provide details (costumer id)
+user registration
+    ->user provide name, email, password and adress
+    ->data save into sanity
+    ->confirmation sent to the user
+delivery
+    ->recived order
+    ->record data into sanity
+    ->send confirmation to user
+tracking
+    ->order stauts update via third party app 
+    ->desplay to costumer
